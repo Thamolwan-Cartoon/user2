@@ -16,6 +16,11 @@ export default function PlayerPage() {
     return (
         <div className="flex flex-col justify-center items-center h-screen">
             <h1>Player Page</h1>
+
+            <pre className="border border-amber-500 p-2 m-2">
+                {JSON.stringify(state.data, null, 4)}
+            </pre>
+
             <form action={action}>
                 <div>
                     Name: <input className="border my-2 px-2"
