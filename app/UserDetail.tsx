@@ -19,10 +19,11 @@ export default function UserPage({ results }: { results: UserType[] }) {
     }
 
     return (<div className='border'>
-        <h1>User Page</h1>
+        <h1 className='text-xl font-extrabold text-center'>User Page</h1>
 
-        <div>
-            Number: <Input className='border px-2'
+        <div className='flex justify-center items-center mx-4'>
+            <span className='mx-2'>Number:</span>
+            <Input className='border px-2 w-56'
                 type="number" name="num" defaultValue="5"
                 onChange={e => setNum(+e.target.value)}
             />

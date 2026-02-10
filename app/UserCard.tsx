@@ -22,8 +22,9 @@ export default function CardImage({ item, index }: { item: UserType, index: numb
             <CardHeader>
                 <CardTitle>{item.user.name.title}. {item.user.name.first}  {item.user.name.last}</CardTitle>
                 <Badge variant="secondary"> {item.user.location.city}</Badge>
-                <CardDescription>
+                <CardDescription className="mb-2">
                     {item.user.email}
+                    <hr />
                     {item.user.phone}
                 </CardDescription>
             </CardHeader>
