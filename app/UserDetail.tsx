@@ -1,8 +1,11 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { URL, UserType } from '@/constants/type'
 import Image from 'next/image'
 import { useState } from 'react'
+import UserCard from './UserCard'
 
 export default function UserPage({ results }: { results: UserType[] }) {
 
@@ -15,17 +18,17 @@ export default function UserPage({ results }: { results: UserType[] }) {
         setUsers(users.results)
     }
 
-    return (<div>
+    return (<div className='border'>
         <h1>User Page</h1>
 
         <div>
-            Number: <input className='border px-2'
+            Number: <Input className='border px-2'
                 type="number" name="num" defaultValue="5"
                 onChange={e => setNum(+e.target.value)}
             />
-            <button className='border px-2 m-2' onClick={fetchUser}>
+            <Button variant='ghost' className='border px-2 m-2' onClick={fetchUser}>
                 Submit
-            </button>
+            </Button>
         </div>
 
         {/* <div>
@@ -33,11 +36,11 @@ export default function UserPage({ results }: { results: UserType[] }) {
         {JSON.stringify(users, null, 4)}
       </pre>
     </div> */}
-        <div className='flex flex-wrap '>
+        <div className='flex flex-wrap border justify-center items-center h-screen'>
             {
                 users.map((item: UserType, index: number) =>
-                    <div key={index} className="border-2 m-2 p-2 flex justify-between items-center">
-                        <div className='mr-4'>
+                    <div key={index} className="border-2 m-2 p-2 w-64">
+                        {/* <div className='mr-4'>
                             <Image src={item.user.picture.large}
                                 loading="eager"
                                 width={100} height={100} alt="User" />
@@ -55,7 +58,9 @@ export default function UserPage({ results }: { results: UserType[] }) {
                             <div>
                                 {item.user.phone}
                             </div>
-                        </div>
+                        </div> */}
+
+                        <UserCard item={item} index={index} />
                     </div>
                 )
             }
