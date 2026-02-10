@@ -1,27 +1,12 @@
 'use client'
 
+import { URL, UserType } from '@/constants/type'
 import Image from 'next/image'
 import { useState } from 'react'
 
-const URL = `https://randomuser.me/api/0.8/`
-
-type UserType = {
-    user: {
-        name: {
-            title: string
-            first: string
-            last: string
-        },
-        email: string
-        picture: {
-            large: string
-        }
-    }
-}
-
 export default function UserPage({ results }: { results: UserType[] }) {
 
-    const [num, setNum] = useState(3)
+    const [num, setNum] = useState(5)
     const [users, setUsers] = useState(results)
 
     const fetchUser = async () => {
@@ -38,9 +23,7 @@ export default function UserPage({ results }: { results: UserType[] }) {
                 type="number" name="num" defaultValue="5"
                 onChange={e => setNum(+e.target.value)}
             />
-            <button className='border px-2 m-2' onClick={() => {
-                fetchUser()
-            }} >
+            <button className='border px-2 m-2' onClick={fetchUser}>
                 Submit
             </button>
         </div>
@@ -55,7 +38,9 @@ export default function UserPage({ results }: { results: UserType[] }) {
                 users.map((item: UserType, index: number) =>
                     <div key={index} className="border-2 m-2 p-2 flex justify-between items-center">
                         <div className='mr-4'>
-                            <Image src={item.user.picture.large} width={100} height={100} alt="User" />
+                            <Image src={item.user.picture.large}
+                                loading="eager"
+                                width={100} height={100} alt="User" />
                         </div>
                         <div>
                             <div>
@@ -63,6 +48,12 @@ export default function UserPage({ results }: { results: UserType[] }) {
                             </div>
                             <div>
                                 {item.user.email}
+                            </div>
+                            <div>
+                                {item.user.location.city}
+                            </div>
+                            <div>
+                                {item.user.phone}
                             </div>
                         </div>
                     </div>
