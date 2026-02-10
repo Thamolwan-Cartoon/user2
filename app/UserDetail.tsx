@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import UserCard from './UserCard'
 
+
+
 export default function UserPage({ results }: { results: UserType[] }) {
 
     const [num, setNum] = useState(5)
@@ -19,7 +21,7 @@ export default function UserPage({ results }: { results: UserType[] }) {
     }
 
     return (<div className='border'>
-        <h1 className='text-xl font-extrabold text-center'>User Page</h1>
+        <h1 className='text-xl font-extrabold text-center'>Warodom 's User Page</h1>
 
         <div className='flex justify-center items-center mx-4'>
             <span className='mx-2'>Number:</span>
